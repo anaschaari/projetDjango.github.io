@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+     <style>
+ @import url('https://fonts.googleapis.com/css?family=Lato|Raleway');
+
+body {
+    background-color: #696969;
+    font-family: "Lato";
+    font-weight: 300;
+    font-size: 16px;
+    color:#555;
+
+
+    -webkit-font-smoothing: antialiased;
+    -webkit-overflow-scrolling:touch;
+
+    margin-top:60px;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: Raleway;
+    font-weight: 300;
+    color:#333;
+}
+button{
+  background-color: black;
+  color: white;
+  border: 2px solid #4CAF50;
+  width: 100px;}
+
+  font-family: Raleway;}
+p{
+    line-height:28px;
+    margin-bottom: 25px;
+}
+
+.centered{
+    text-align: center;
+}
+
+a{
+    color:#f85c37;
+}
+
+a:hover, a:focus{
+    color:#7b7b7b;
+    text-decoration: none;
+    outline: 0;
+}
+
+hr{
+    display:block;
+    height:1px;
+    border:0px;
+    border-top:1px solid #ccc;
+    margin:1em 0;
+    padding:0;
+}
+
+.navbar {
+    font-weight: 800;
+    fin-sise:14px;
+    padding-top:15px;
+    padding-bottom:15px;
+}
+
+.navbar-inverse {
+    background: #2d2d2d;
+    border-color:#2d2d2d;
+}
+</style>
+<title>mystore</title>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="">My<i class="fa fa-circle"></i>Store</a>
+      </div>
+      <div class="navbar-collapse collapse"> <!--class="navbar-collapse collapse"-->
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active"><a href="http://127.0.0.1:8000">MyHome</a></li>
+          <li><a href="produits">MyProducts</a></li>
+          {% if request.user.is_staff %}
+          <li><a href="fournisseur">Fournisseur</a></li>
+          {% endif %}
+          <li><a href="/commandes">MyCommandes</a></li>
+          {% if request.user.is_anonymous %}
+          <li>  <button type="button" onclick="location.href='login'" class="btn btn-dark" > Login  </button></li>
+          <li>  <button type="button" onclick="location.href='register'" class="btn btn-dark" > Register  </button></li>
+          {% endif %}
+          <li><a href="#"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</head>
+<body>
+<br/>
+
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="images/im2.jpg" id="myImage" class="d-block w-100" alt="...">
+
+      <div class="carousel-caption d-none d-md-block">
+        <img src="images/im1.jpg" width="800px" height="250px"/>
+        <h3>Get your best products here</h3>
+
+      </div>
+
+
+
+</div>
+  </div>
+</div>
+</body>
+</html>

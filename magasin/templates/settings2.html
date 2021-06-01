@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Settings</title>
+</head>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: grey
+}
+
+.wrapper {
+    padding: 30px 50px;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    margin: 10px auto;
+    max-width: 600px
+}
+
+h4 {
+    letter-spacing: -1px;
+    font-weight: 400
+}
+
+
+.profile-pic{
+		max-width: 200px;
+		max-height:200px;
+		margin: 0 auto;
+		border-radius: 50%;
+	}
+
+#img-section p,
+#deactivate p {
+    font-size: 12px;
+    color: #777;
+    margin-bottom: 10px;
+    text-align: justify
+}
+
+#img-section b,
+#img-section button,
+#deactivate b {
+    font-size: 14px
+}
+
+
+
+.form-control {
+    border-radius: 10px
+}
+
+
+.form-control:focus {
+    box-shadow: none;
+    border: 1.5px solid #0779e4
+}
+
+
+
+.btn-primary {
+    background-color: #0779e4
+}
+
+
+
+
+}
+</style>
+<body>
+<a class="btn btn-warning" href="{% url 'index1' %}"> &#8592; Back to Profile</a>
+<div class="wrapper bg-white mt-sm-5">
+    <h4 class="pb-4 border-bottom">Account settings</h4>
+    <div class="d-flex align-items-start py-3 border-bottom"> <img class="profile-pic" src="{{request.user.customer.profile_pic.url}}" >
+        <div class="pl-sm-4 pl-2" id="img-section"> <b>Profile Photo</b>
+        </div>
+    </div>
+    <div class="py-2">
+<form method="POST" action="" enctype="multipart/form-data">
+				{% csrf_token %}
+				{{form.as_p}}
+
+			<input class="btn btn-primary" type="submit" name="Update Information">
+			</form>
+
+    </div>
+</div>
+</body>
+</html>

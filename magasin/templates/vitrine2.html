@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+</head>
+<style>
+    tbody{
+    width: 50%;
+    }
+</style>
+<body>
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<form method='POST' class="post-form">
+{% csrf_token %}
+<table class="table table-sm table-dark">
+  <thead>
+<h2>you can find whatever you want here :</h2>
+
+
+  </thead>
+  <tbody>
+    {% for article in list %}
+<td>
+ <img src='{{ MEDIA_URL }}{{ article.img }}'
+class="rounded float-start "height="200px" width="200px" alt="">
+ <figcaption class="figure-caption">
+{{article.name}}
+ </figcaption>
+
+ <p>  </p>
+ <p> {{article.prix}} DT. </p>
+<a   href="{% url 'view' article.id %}"> view more</a>
+  {% endfor %}
+  </tbody>
+</table>
+    </form>
+{% endblock %}
+</body>
+</html>

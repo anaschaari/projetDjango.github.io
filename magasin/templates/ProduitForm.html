@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fournisseur</title>
+    {% extends 'base.html' %}
+</head>
+<body>
+{% block body %}
+<form method="post" >
+     {% csrf_token %}
+    
+{{form}}
+    <button type="submit">ok</button>
+</form>
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,142 @@
+{% load static %}
+
+<html>
+<head>
+	<meta charset='utf-8'>
+	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+     <style>
+ @import url('https://fonts.googleapis.com/css?family=Lato|Raleway');
+
+body {
+    background-color: white;
+    font-family: "Lato";
+    font-weight: 300;
+    font-size: 16px;
+    color:#555;
+
+
+    -webkit-font-smoothing: antialiased;
+    -webkit-overflow-scrolling:touch;
+
+    margin-top:60px;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: Raleway;
+    font-weight: 300;
+    color:#333;
+}
+
+p{
+    line-height:28px;
+    margin-bottom: 25px;
+}
+
+.centered{
+    text-align: center;
+}
+
+a{
+    color:#f85c37;
+}
+
+a:hover, a:focus{
+    color:#7b7b7b;
+    text-decoration: none;
+    outline: 0;
+}
+.profile-pic{
+		max-width: 30px;
+		max-height:30px;
+		margin: 0 auto;
+		border-radius: 50%;
+	}
+
+hr{
+    display:block;
+    height:1px;
+    border:0px;
+    border-top:1px solid #ccc;
+    margin:1em 0;
+    padding:0;
+}
+
+.navbar {
+    font-weight: 800;
+    fin-sise:14px;
+    padding-top:15px;
+    padding-bottom:15px;
+}
+.hello-msg{
+    font-size: 18px;
+    color: #fff;
+    margin-right: 20px;
+
+  }
+.navbar-inverse {
+    background: #2d2d2d;
+    border-color:#2d2d2d;
+}
+button{
+  background-color: black;
+  color: white;
+  border: 2px solid #4CAF50;
+  width: 100px;}
+</style>
+	<title>
+		{% block title %} {% endblock %}
+	</title>
+	<link rel='stylesheet' type='text/css' media='screen' 
+		href="{% static 'css/base.css'%}">
+
+	{% block styles %} {% endblock %}
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+          <a class="navbar-brand" href="http://127.0.0.1:8000">My<i class="fa fa-circle"></i>Store</a>
+      </div>
+      <div class="navbar-collapse collapse"> <!--class="navbar-collapse collapse"-->
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href=" ">Home</a></li>
+          <li><a href="/produits">MyProducts</a></li>
+            {% if request.user.is_staff %}
+          <li><a href="fournisseur">Fournisseur</a></li>
+            <li><a  class="hello-msg" href="{% url 'dashboard' %}">Dashboard</a></li>
+            {% endif %}
+          <li><a href="/commandes">MyCommandes</a></li>
+            {% if request.user.is_authenticated %}
+            <li><a href="{% url 'account' %}"><img class="profile-pic" src="{{request.user.customer.profile_pic.url}}" ></a></li>
+  <li><a class="hello-msg" href="user">{{request.user}}</a></li>
+
+  <li><a  class="hello-msg" href="{% url 'logout' %}">Logout</a></li>
+            <li> <a class="nav-link" href="{% url 'account' %}">Settings</a></li>
+            {% endif %}
+            {% if request.user.is_anonymous %}
+          <li>  <button type="button" onclick="location.href='login'" class="btn btn-dark" > Login  </button></li>
+          <li>  <button type="button" onclick="location.href='register'" class="btn btn-dark" > Register  </button></li>
+          {% endif %}
+          <li><a href="#"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</head>
+<body>
+<br/>
+<br/>
+<br/>
+
+	{% block body %}
+{% endblock %}
+</body>
+</html>
